@@ -18,12 +18,17 @@ app.get('/dogs', (req, res) => {
   res.send('<h2>Dogs Page</h2>');
 });
 
-app.get('/:subreddit', (req, res) => {
+app.get('/search', (req, res) => {
+  const { q } = req.query;
+  res.send(`Searching Results: ${q}`);
+});
+
+app.get('r/:subreddit', (req, res) => {
   const { subreddit } = req.params;
   res.send(`<h2>Browsing ${subreddit} subreddit!</h2>`);
 });
 
-app.get('/:subreddit/:postID', (req, res) => {
+app.get('r/:subreddit/:postID', (req, res) => {
   const { subreddit, postID } = req.params;
   res.send(`<h2>Viewing postID: ${postID} of ${subreddit} subreddit!</h2>`);
 });
